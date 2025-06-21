@@ -104,7 +104,7 @@ function AppRoutes() {
 function App() {
   return (
     <div className="app">
-      <Router>
+      <Router basename="/news-explorer-frontend/">
         <AppRoutes />
       </Router>
     </div>

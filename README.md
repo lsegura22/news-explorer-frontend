@@ -1,12 +1,47 @@
-# React + Vite
+News Explorer Frontend
+This is a React + Vite project for searching, saving, and exploring news articles.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo
+View the deployed project here.
 
-Currently, two official plugins are available:
+Features
+Search news articles with News API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Save/remove articles (simulated backend)
 
-## Expanding the ESLint configuration
+Responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Authentication modals (simulated)
+
+Deployed to GitHub Pages
+
+How to run locally
+sh
+Copy
+Edit
+git clone https://github.com/lsegura22/news-explorer-frontend.git
+cd news-explorer-frontend
+npm install
+npm run dev
+Scripts
+npm run dev – start development server
+
+npm run build – build for production
+
+npm run deploy – deploy to GitHub Pages
+
+npm run preview – preview production build locally
+
+Technologies
+React
+
+Vite
+
+News API
+
+CSS
+
+Notes
+Saving/deleting articles and authentication are simulated in the frontend.
+
+For production, a real backend should be used.
