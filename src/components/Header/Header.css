@@ -1,0 +1,177 @@
+.header {
+  width: 100%;
+  background: rgba(26, 26, 29, 0.4); /* For home page hero section */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+/* Light theme for saved articles page */
+.header--light {
+  background: #fff;
+  position: static;
+  box-shadow: 0 1px 0 #e8e8e8;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.header__logo {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #222e3e;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.header:not(.header--light) .header__logo {
+  color: #fff;
+}
+.header__logo:hover {
+  opacity: 0.7;
+}
+
+.header__links {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.header__links-guest {
+  gap: 42px !important;
+}
+
+/* Nav links */
+.header__link {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #222e3e;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  transition: border 0.2s, color 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+.header:not(.header--light) .header__link {
+  color: #fff;
+}
+.header__link_active,
+.header__link:hover {
+  border-bottom: 3px solid #222e3e;
+}
+.header:not(.header--light) .header__link_active,
+.header:not(.header--light) .header__link:hover {
+  border-bottom: 3px solid #fff;
+  color: #fff;
+}
+
+/* --- SIGN IN BUTTON (Transparent on home, blue on saved-news) --- */
+.header__signin-btn {
+  width: 176px;
+  height: 48px;
+  border: 1.5px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Roboto", Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__signin-btn:hover,
+.header__signin-btn:focus {
+  background: #2f71e5;
+  color: #fff;
+  border-color: #2f71e5;
+}
+
+/* Light (saved-news) header style for sign in */
+.header__signin-btn.header__signin-btn--light {
+  border: 1.5px solid #2f71e5;
+  color: #2f71e5;
+  background: #fff;
+}
+.header__signin-btn.header__signin-btn--light:hover,
+.header__signin-btn.header__signin-btn--light:focus {
+  background: #2f71e5;
+  color: #fff;
+  border-color: #2f71e5;
+}
+
+/* --- SIGN OUT (User) BUTTON --- */
+.header__user-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #222e3e;
+  background: transparent;
+  border-radius: 100px;
+  width: 112px;
+  height: 48px;
+  padding: 12px 54px 12px 19px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222e3e;
+  font-family: "Roboto", Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s, color 0.2s;
+}
+.header:not(.header--light) .header__user-btn {
+  border: 2px solid #fff;
+  color: #fff;
+}
+.header__user-btn:hover {
+  background: #f5f6fa;
+  color: #2f71e5;
+  border-color: #2f71e5;
+}
+.header:not(.header--light) .header__user-btn:hover {
+  background: #fff;
+  color: #2f71e5;
+  border-color: #2f71e5;
+}
+
+.header__user-name {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.header__logout-icon {
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  margin-left: 8px;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .header__nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .header__links {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+}
