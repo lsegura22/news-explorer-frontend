@@ -1,0 +1,76 @@
+.search-form__form {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 8px 8px 8px 24px;
+  box-sizing: border-box;
+  min-width: 0; /* Prevent flex overflow */
+}
+
+.search-form__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  padding: 16px 0;
+  background: transparent;
+  font-family: "Roboto", Arial, sans-serif;
+  color: #222e3e;
+  border-radius: 40px 0 0 40px;
+  min-width: 0; /* Prevent overflow on flex child */
+}
+
+.search-form__button {
+  border: none;
+  background: #2f71e5;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 16px 40px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 0;
+}
+
+.search-form__button:hover {
+  background: #1956b2;
+}
+
+/* ===== Responsive: Stack Input & Button on Small Screens ===== */
+@media (max-width: 400px) {
+  .search-form__form {
+    flex-direction: column;
+    align-items: stretch;
+    background: none;
+    box-shadow: none;
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .search-form__input {
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 16px 16px;
+    margin-bottom: 0;
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .search-form__button {
+    width: 100%;
+    border-radius: 20px;
+    margin-left: 0;
+    font-size: 18px;
+    padding: 16px 0;
+    box-shadow: 0px 4px 24px 0px rgba(47, 113, 229, 0.25); /* blue glow, like Figma */
+  }
+}
