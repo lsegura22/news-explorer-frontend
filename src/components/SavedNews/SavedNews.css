@@ -1,6 +1,6 @@
 .saved-news {
-  background: #fff;
-  padding-top: 40px;
+  background: hsl(0, 0%, 100%);
+  padding-top: 8px;
   padding-bottom: 0; /* No extra bottom */
 }
 
@@ -41,5 +41,15 @@
   }
   .saved-news__title {
     font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .saved-news {
+    padding-top: 56px;
+  }
+  .saved-news__cards-bg {
+    padding-top: 24px;
+    padding-bottom: 12px;
   }
 }

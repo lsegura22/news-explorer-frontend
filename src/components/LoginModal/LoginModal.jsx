@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginModal.css";
 
 function LoginModal({ onClose, onRegister, onLogin }) {
@@ -6,23 +6,37 @@ function LoginModal({ onClose, onRegister, onLogin }) {
   const [password, setPassword] = useState("");
   const [touched, setTouched] = useState(false);
 
+  // Prevent background scroll for 320px
+  useEffect(() => {
+    if (window.innerWidth <= 320) {
+      document.body.classList.add("body--noscroll-320");
+    }
+    return () => {
+      document.body.classList.remove("body--noscroll-320");
+    };
+  }, []);
+
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
   const showEmailError = touched && email && !isEmailValid;
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Simulate login (success if fields valid)
     if (isEmailValid && password) {
-      onLogin(); // parent handles user state
+      onLogin();
     }
   }
+
+  // Only show close button INSIDE modal if not mobile
+  const showClose = window.innerWidth > 320;
 
   return (
     <div className="modal-overlay">
       <div className="modal modal--login">
-        <button className="modal__close" onClick={onClose} aria-label="Close">
-          &times;
-        </button>
+        {showClose && (
+          <button className="modal__close" onClick={onClose} aria-label="Close">
+            &times;
+          </button>
+        )}
         <h2 className="modal__title">Sign in</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <label className="modal__label" htmlFor="login-email">

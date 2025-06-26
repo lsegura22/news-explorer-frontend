@@ -1,5 +1,4 @@
-// src/components/RegisterModal/RegisterModal.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RegisterModal.css";
 
 function RegisterModal({ onClose, onSignIn, onSuccess }) {
@@ -12,6 +11,30 @@ function RegisterModal({ onClose, onSignIn, onSuccess }) {
     name: false,
   });
 
+  // Scroll lock for 320px
+  useEffect(() => {
+    if (window.innerWidth <= 320) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100vw";
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, []);
+  // -----
+
   const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
   const isNameValid = name.length >= 2 && name.length <= 40;
   const showEmailError = touched.email && email && !isEmailValid;
@@ -19,7 +42,6 @@ function RegisterModal({ onClose, onSignIn, onSuccess }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Register logic here, or show success
     onSuccess && onSuccess();
   }
 
@@ -31,6 +53,7 @@ function RegisterModal({ onClose, onSignIn, onSuccess }) {
         </button>
         <h2 className="modal__title">Sign up</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
+          {/* ... rest unchanged ... */}
           <label className="modal__label" htmlFor="register-email">
             Email
           </label>

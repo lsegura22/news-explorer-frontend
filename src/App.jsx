@@ -1,5 +1,4 @@
-// src/App.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,9 +19,27 @@ function AppRoutes() {
   const [modal, setModal] = useState(null);
   const [user, setUser] = useState(null);
   const [savedArticles, setSavedArticles] = useState([]);
-  const [lastSearchTerm, setLastSearchTerm] = useState(""); // << NEW
+  const [lastSearchTerm, setLastSearchTerm] = useState("");
 
   const navigate = useNavigate();
+
+  // Track if window is 320px or less
+  const [isMobile320, setIsMobile320] = useState(window.innerWidth <= 320);
+  useEffect(() => {
+    const handleResize = () => setIsMobile320(window.innerWidth <= 320);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Lock scroll only when modal is open on 320px
+  useEffect(() => {
+    if (modal && isMobile320) {
+      document.body.classList.add("body--noscroll-320");
+    } else {
+      document.body.classList.remove("body--noscroll-320");
+    }
+    return () => document.body.classList.remove("body--noscroll-320");
+  }, [modal, isMobile320]);
 
   function handleLogin() {
     setUser({ name: "Luis" });
@@ -39,11 +56,13 @@ function AppRoutes() {
       if (exists) {
         return prev.filter((a) => a.url !== article.url);
       } else {
-        // Attach the keyword!
         return [{ ...article, keyword: lastSearchTerm }, ...prev];
       }
     });
   }
+
+  // Only show the header close X if modal is open AND screen is 320px
+  const showHeaderClose = !!modal && isMobile320;
 
   return (
     <>
@@ -51,6 +70,8 @@ function AppRoutes() {
         user={user}
         onSignIn={() => setModal("login")}
         onSignOut={handleLogout}
+        showHeaderClose={showHeaderClose}
+        onHeaderClose={() => setModal(null)}
       />
 
       <Routes>
@@ -61,7 +82,7 @@ function AppRoutes() {
               user={user}
               onToggleSave={handleToggleSave}
               savedArticles={savedArticles}
-              setLastSearchTerm={setLastSearchTerm} // pass this down!
+              setLastSearchTerm={setLastSearchTerm}
             />
           }
         />

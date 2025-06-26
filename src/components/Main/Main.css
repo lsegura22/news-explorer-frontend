@@ -53,3 +53,39 @@
   font-weight: 400;
   line-height: 24px;
 }
+
+@media (max-width: 768px) {
+  .main__hero-title {
+    font-size: 36px;
+    line-height: 40px;
+    width: 385px;
+    text-align: left;
+  }
+  .main__hero-subtitle {
+    max-width: 452px;
+    text-align: left;
+  }
+}
+@media (max-width: 320px) {
+  .main__hero-title {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0px;
+    margin-bottom: 16px;
+    max-width: 285px;
+  }
+
+  .main__hero-content {
+    padding-bottom: 32px;
+    padding-top: 0;
+  }
+  .main__hero {
+    padding-top: 86px;
+  }
+  .main__hero-subtitle {
+    margin-top: 0px;
+    margin-bottom: 122px;
+  }
+}
